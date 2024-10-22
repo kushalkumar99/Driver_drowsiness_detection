@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drowsiness Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: black;
+            color: white;
+        }
+        #video {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 24px;
+            font-family: 'Great Vibes', cursive;
+            cursor: pointer;
+            border: none;
+            color: black;
+            background-color: #F7DC6F;
+            border-radius: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function startVideo() {
+            document.getElementById('videoFeed').src = "{{ url_for('video_feed') }}"; 
+        }//Function that sets the src attribute of the videoFeed image element to the URL for the video feed, starting the video stream.
+
+        function stopVideo() {
+            document.getElementById('videoFeed').src = "";
+        }//Function that clears the src attribute of the videoFeed image element, stopping the video stream.
+    </script>
+</head>
+<body>
+    <h1>Driver Drowsiness Detection System</h1>
+    <div id="video">
+        <img id="videoFeed" src="" width="450" height="450"> 
+    </div> 
+    <div>
+        <button class="btn" onclick="startVideo()">Start Camera</button>
+        <button class="btn" onclick="stopVideo()">Stop Camera</button>
+    </div>
+</body>
+</html>
